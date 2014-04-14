@@ -25,13 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # config.ssh.forward_agent = true
 
-  config.vm.provision "file" do |f|
-    f.source = "/Users/jurginius/.vimrc"
-    f.destination = "/home/vagrant/.vimrc"
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "play.yml"
+    ansible.sudo = true
   end
-  config.vm.provision "file" do |f|
-    f.source = "/Users/jurginius/.inputrc"
-    f.destination = "/home/vagrant/.inputrc"
-  end
-  config.vm.provision :shell, :path => "bootstrap.sh"
 end

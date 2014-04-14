@@ -1,0 +1,33 @@
+---
+- hosts: default
+  remote_user: vagrant
+  tasks:
+    - name: copy vim config to guest
+      copy: src=/Users/jurginius/.vimrc dest=/home/vagrant
+    - name: copy inputrc config to guest
+      copy: src=/Users/jurginius/.inputrc dest=/home/vagrant
+    - name: update package cache
+      apt: update_cache=yes cache_valid_time=3600
+    - name: add a lot of packages
+      apt: pkg={{ item }} state=present install_recommends=no
+      with_items:
+        - python-dev
+        - build-essential
+        - git
+        - vim
+        - subversion
+        - mercurial
+        - python-virtualenv
+        - libpq-dev
+        - libxml2-dev
+        - libgeos-dev
+        - libproj-dev
+        - libgdal1-dev
+        - libapache2-mod-xsendfile
+        - libapache2-mod-wsgi
+        - libjpeg-dev 
+        - zlib1g-dev 
+        - libfreetype6-dev
+        - libyaml-dev
+        - memcached
+        - postgresql-9.1-postgis
