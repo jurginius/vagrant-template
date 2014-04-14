@@ -1,3 +1,8 @@
+# Project files
+data.csv
+pdfmaker/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
